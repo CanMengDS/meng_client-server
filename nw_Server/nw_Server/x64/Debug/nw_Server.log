@@ -1,8 +1,7 @@
-﻿  MengTcpServer.cpp
-D:\C++ github_project\simple_client-server\nw_Server\nw_Server\MengTcpServer.cpp(5,36): warning C4244: “=”: 从“SOCKET”转换到“int”，可能丢失数据
-D:\C++ github_project\simple_client-server\nw_Server\nw_Server\MengTcpServer.cpp(30,29): warning C4244: “=”: 从“SOCKET”转换到“int”，可能丢失数据
-D:\C++ github_project\simple_client-server\nw_Server\nw_Server\MengTcpServer.cpp(48,56): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
+﻿  MengMultiTcpConduct.cpp
+D:\C++ github_project\simple_client-server\nw_Server\nw_Server\MengMultiTcpConduct.cpp(25,21): warning C4018: “<”: 有符号/无符号不匹配
+D:\C++ github_project\simple_client-server\nw_Server\nw_Server\MengMultiTcpConduct.cpp(34,46): warning C4244: “参数”: 从“SOCKET”转换到“int”，可能丢失数据
   main.cpp
   正在生成代码...
-D:\C++ github_project\simple_client-server\nw_Server\nw_Server\MengTcpServer.cpp(74,1): warning C4172: 返回局部变量的地址或临时 
+x64\Debug\MengServerThreadPool.obj : warning LNK4042: 对象被多次指定；已忽略多余的指定
   nw_Server.vcxproj -> D:\C++ github_project\simple_client-server\nw_Server\x64\Debug\nw_Server.exe

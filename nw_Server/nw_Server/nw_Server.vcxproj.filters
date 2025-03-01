@@ -21,6 +21,9 @@
     <ClInclude Include="reClientData.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="MengMultiTcpConduct.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MengTcpServer.cpp">
@@ -33,6 +36,9 @@
       <Filter>头文件</Filter>
     </ClCompile>
     <ClCompile Include="MengServerThreadPool.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="MengMultiTcpConduct.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

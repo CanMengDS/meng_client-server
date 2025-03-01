@@ -4,6 +4,7 @@ bool MengTcpServer::initServer(const unsigned short in_port)
 {
 	if ((server_listen_socket = socket(AF_INET, SOCK_STREAM, 0)) == -1)return false;
 	se_port = in_port;
+
 	sockaddr_in servaddr;
 	memset(&servaddr, 0, sizeof(servaddr));
 	servaddr.sin_family = AF_INET;

@@ -2,8 +2,9 @@
 #include<iostream>
 #include <cstdlib>
 #include <cstring>
+#include <thread>
+#include"MengMultiTcpConduct.h"
 #include"MengTcpServer.h"
-#include"MengServerThreadPool.h"
 using namespace std;
 
 int main(int argc, char argv[]) {
@@ -18,23 +19,39 @@ int main(int argc, char argv[]) {
 	switch (choies) {
 	case 1:
 		int accept_num = 0;
-		while (1) {
-			pair<int, bool> re_detection = mengServer.accept();
+			/*pair<int, bool> re_detection = mengServer.accept();
 			if (!re_detection.second) {
 				cerr << "与客户端连接错误，已跳过此次连接..." << endl;
 				continue;
 			}
 			int exchange_socket = re_detection.first;
-			accept_num++;
-
-			string buffer;
+			accept_num++;*/
+		thread t([&mengServer] {
+			MengMultiTcpConduct conduct;
+			const SOCKET listen = mengServer.getServerListenSocket();
 			while (1) {
+				conduct.initExchange(listen, MengTcpServer::recv);
+			}
+			});
+		
+		t.join();
+		string buffer;
+
+			
+
+
+			/*while (1) {
 				if (!mengServer.recv(buffer, 1024,re_detection.first)) {
 					cout << "连接已断开" << endl;
 					break;
 				}
 				cout << "数据接收 :" << buffer << endl;
-			}
+			}*/
+
+
+
+
+
 			//string buffer;
 			//while (1) {
 			//	if (mengServer.recv(buffer, 1024) == false) {
@@ -52,6 +69,5 @@ int main(int argc, char argv[]) {
 			//	}
 			//	cout << "发送了:" << buffer << endl;*/
 			//}
-		}
 	}
 }

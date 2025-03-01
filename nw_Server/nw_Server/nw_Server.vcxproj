@@ -127,11 +127,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="MengMultiTcpConduct.h" />
     <ClInclude Include="MengTcpServer.h" />
     <ClInclude Include="reClientData.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MengMultiTcpConduct.cpp" />
     <ClCompile Include="MengTcpServer.cpp" />
     <ClCompile Include="MengServerThreadPool.cpp" />
     <ClCompile Include="MengServerThreadPool.h" />
