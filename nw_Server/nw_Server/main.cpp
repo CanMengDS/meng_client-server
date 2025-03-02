@@ -29,9 +29,7 @@ int main(int argc, char argv[]) {
 		thread t([&mengServer] {
 			MengMultiTcpConduct conduct;
 			const SOCKET listen = mengServer.getServerListenSocket();
-			while (1) {
-				conduct.initExchange(listen, MengTcpServer::recv);
-			}
+			conduct.initExchange(listen);
 			});
 		
 		t.join();

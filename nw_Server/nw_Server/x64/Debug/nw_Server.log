@@ -1,7 +1,16 @@
-﻿  MengMultiTcpConduct.cpp
-D:\C++ github_project\simple_client-server\nw_Server\nw_Server\MengMultiTcpConduct.cpp(25,21): warning C4018: “<”: 有符号/无符号不匹配
-D:\C++ github_project\simple_client-server\nw_Server\nw_Server\MengMultiTcpConduct.cpp(34,46): warning C4244: “参数”: 从“SOCKET”转换到“int”，可能丢失数据
-  main.cpp
+﻿  main.cpp
+  MengFileInfo.h
+  MengIOConduct.cpp
+  MengMultiTcpConduct.cpp
+D:\C++ github_project\simple_client-server\nw_Server\nw_Server\MengMultiTcpConduct.cpp(28,21): warning C4018: “<”: 有符号/无符号不匹配
+D:\C++ github_project\simple_client-server\nw_Server\nw_Server\MengMultiTcpConduct.cpp(45,1): warning C5255: 遇到未终止的双向字符:“U+202a”
+  MengTcpServer.cpp
+D:\C++ github_project\simple_client-server\nw_Server\nw_Server\MengTcpServer.cpp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+D:\C++ github_project\simple_client-server\nw_Server\nw_Server\MengTcpServer.cpp(5,36): warning C4244: “=”: 从“SOCKET”转换到“int”，可能丢失数据
+D:\C++ github_project\simple_client-server\nw_Server\nw_Server\MengTcpServer.cpp(31,29): warning C4244: “=”: 从“SOCKET”转换到“int”，可能丢失数据
+D:\C++ github_project\simple_client-server\nw_Server\nw_Server\MengTcpServer.cpp(48,52): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
   正在生成代码...
+D:\C++ github_project\simple_client-server\nw_Server\nw_Server\MengTcpServer.cpp(88,1): warning C4172: 返回局部变量的地址或临时 
+D:\C++ github_project\simple_client-server\nw_Server\nw_Server\MengIOConduct.cpp(40,1): warning C4715: “MengIOConduct::sendBinaryFile”: 不是所有的控件路径都返回值
 x64\Debug\MengServerThreadPool.obj : warning LNK4042: 对象被多次指定；已忽略多余的指定
   nw_Server.vcxproj -> D:\C++ github_project\simple_client-server\nw_Server\x64\Debug\nw_Server.exe

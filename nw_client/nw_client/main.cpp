@@ -1,5 +1,6 @@
 #pragma comment(lib, "Ws2_32.lib")
 #include<iostream>
+#include"MengIOConduct.h"
 #include"MengTcpClient.h"
 using namespace std;
 
@@ -20,23 +21,41 @@ int main(int argc, char* argv[]) {
 		clog << "成功建立通讯..." << endl;
 	}
 
-	char buffer[1024];
-	memset(&buffer, 0, sizeof(buffer));
+	char send_buffer[1024];
+	char recv_buffer[1024];
+	memset(&send_buffer, 0, sizeof(send_buffer));
 
 	int cho = 0, num = 0;
 	string user_document;
+
+	SOCKET tcp_socket = mengClient.getClientSocket();
+	string recvive_document;
+	MengIOConduct conduct_;
 	while (1) {
 		cout << '\n' << "请输入发送数据,并回车以确认发送..." << endl;
 		cin >> user_document;
-		memcpy(&buffer, user_document.c_str(), sizeof(user_document));
-		if (mengClient.send(buffer) == false) {
+		memcpy(&send_buffer, user_document.c_str(), sizeof(user_document));
+		if (mengClient.send(user_document.c_str(), tcp_socket) == false) {
 			cerr << "未知错误,未能成功发送数据,已断开服务端连接" << endl;
 			break;
 		}
 		else {
 			clog << "成功发送数据" << endl;
 		}
-		num++;
+
+		if (mengClient.recv(recv_buffer, sizeof(recv_buffer), tcp_socket)) {
+			cout << "正确接收" << endl;
+
+			recvive_document = recv_buffer;
+			cout << recv_buffer << endl;
+			/*if (recvive_document.compare("|image|")) {
+				conduct_.recvive(tcp_socket, mengClient);
+			}
+			else if (recvive_document.compare("-1")) {
+				clog << "服务端正确回应" << endl;
+				continue;
+			}*/
+		}
 	}
 	
 	system("pause");

@@ -1,12 +1,17 @@
-c:\users\33953\source\repos\nw_client\x64\debug\nw_client.exe
-c:\users\33953\source\repos\nw_client\x64\debug\nw_client.pdb
-c:\users\33953\source\repos\nw_client\nw_client\x64\debug\nw_client.ilk
-c:\users\33953\source\repos\nw_client\nw_client\x64\debug\mengtcpclient.obj
-c:\users\33953\source\repos\nw_client\nw_client\x64\debug\vc143.idb
-c:\users\33953\source\repos\nw_client\nw_client\x64\debug\vc143.pdb
-c:\users\33953\source\repos\nw_client\nw_client\x64\debug\nw_client.tlog\cl.command.1.tlog
-c:\users\33953\source\repos\nw_client\nw_client\x64\debug\nw_client.tlog\cl.items.tlog
-c:\users\33953\source\repos\nw_client\nw_client\x64\debug\nw_client.tlog\link.command.1.tlog
-c:\users\33953\source\repos\nw_client\nw_client\x64\debug\nw_client.tlog\link.read.1.tlog
-c:\users\33953\source\repos\nw_client\nw_client\x64\debug\nw_client.tlog\link.secondary.1.tlog
-c:\users\33953\source\repos\nw_client\nw_client\x64\debug\nw_client.tlog\link.write.1.tlog
+d:\c++ github_project\simple_client-server\nw_client\nw_client\x64\debug\vc143.pdb
+d:\c++ github_project\simple_client-server\nw_client\nw_client\x64\debug\vc143.idb
+d:\c++ github_project\simple_client-server\nw_client\nw_client\x64\debug\mengtcpclient.obj
+d:\c++ github_project\simple_client-server\nw_client\nw_client\x64\debug\mengioconduct.obj
+d:\c++ github_project\simple_client-server\nw_client\nw_client\x64\debug\main.obj
+d:\c++ github_project\simple_client-server\nw_client\nw_client\x64\debug\commandconduct.obj
+d:\c++ github_project\simple_client-server\nw_client\x64\debug\nw_client.exe
+d:\c++ github_project\simple_client-server\nw_client\x64\debug\nw_client.pdb
+d:\c++ github_project\simple_client-server\nw_client\nw_client\x64\debug\nw_client.ilk
+d:\c++ github_project\simple_client-server\nw_client\nw_client\x64\debug\nw_client.tlog\cl.command.1.tlog
+d:\c++ github_project\simple_client-server\nw_client\nw_client\x64\debug\nw_client.tlog\cl.items.tlog
+d:\c++ github_project\simple_client-server\nw_client\nw_client\x64\debug\nw_client.tlog\cl.read.1.tlog
+d:\c++ github_project\simple_client-server\nw_client\nw_client\x64\debug\nw_client.tlog\cl.write.1.tlog
+d:\c++ github_project\simple_client-server\nw_client\nw_client\x64\debug\nw_client.tlog\link.command.1.tlog
+d:\c++ github_project\simple_client-server\nw_client\nw_client\x64\debug\nw_client.tlog\link.read.1.tlog
+d:\c++ github_project\simple_client-server\nw_client\nw_client\x64\debug\nw_client.tlog\link.secondary.1.tlog
+d:\c++ github_project\simple_client-server\nw_client\nw_client\x64\debug\nw_client.tlog\link.write.1.tlog

@@ -25,33 +25,46 @@ bool MengTcpServer::initServer(const unsigned short in_port)
 
 pair<int,bool> MengTcpServer::accept()
 {
-	sockaddr_in cddr; //¿Í»§¶ËµÄµØÖ·ĞÅÏ¢
+	sockaddr_in cddr; //å®¢æˆ·ç«¯çš„åœ°å€ä¿¡æ¯
 	int addrlen = sizeof(cddr);  
 	int temp_socket = 0;
 	if ((temp_socket = ::accept(server_listen_socket, (sockaddr*)&cddr, &addrlen)) == INVALID_SOCKET) return pair<int, bool>(0, false);
 	const char* client_ips = inet_ntop(AF_INET,&(cddr.sin_addr.S_un.S_addr), client_ip, sizeof(client_ip));
-	clog << "³É¹¦Óë¿Í»§¶Ë½¨Á¢Á¬½Ó" << "(" << client_ips << ":" << cddr.sin_port<<")" << endl;
+	clog << "æˆåŠŸä¸å®¢æˆ·ç«¯å»ºç«‹è¿æ¥" << "(" << client_ips << ":" << cddr.sin_port<<")" << endl;
 	//createClientExchange(temp_socket,cddr,client_ips);
 	return pair<int,bool>(temp_socket,true);
 }
 
 /**
  * @brief 
- * @param buffer Í¬ÉÏ
- * @param maxlen »º³åÇø´óĞ¡£¬ÒòÎªÊ¹ÓÃclearÇå³ıÁËbufferµÄÄÚÈİ£¬Òò´ËÖ¸¶¨Ò»¸ö×î´ó»º³å´óĞ¡²¢ÔÚµ÷ÓÃrecv½ÓÊÕÊı¾İÊ±ÓĞÓÃµ½¡£
- * @param tcp_socket Í¬ÉÏ
+ * @param buffer åŒä¸‹
+ * @param maxlen ç¼“å†²åŒºå¤§å°
+ * @param tcp_socket
  * @return 
  */
-bool MengTcpServer::recv(string& buffer, const size_t maxlen,int tcp_socket)
+bool MengTcpServer::recv(char* buffer, const size_t buffer_len, SOCKET tcp_socket)
 {
-	buffer.clear();
-	buffer.resize(maxlen);
-	int readn = ::recv(tcp_socket, &buffer[0], buffer.size(), 0);
+	memset(buffer, 0, buffer_len);
+	int readn = ::recv(tcp_socket, buffer, buffer_len - 1, 0);
 	if (readn <= 0) {
-		buffer.clear();
+		memset(buffer, 0, buffer_len);
 		return false;
 	}
-	buffer.resize(readn);
+	return true;
+}
+
+
+/**
+ * @brief 
+ * @param buffer åº”å¡«å…¥ä¸€ä¸ªcharæ•°ç»„
+ * @param buffer_len æ•°ç»„é•¿åº¦
+ * @param tcp_socket 
+ * @return 
+ */
+bool MengTcpServer::send(const char buffer[1024], const size_t buffer_len, SOCKET tcp_socket)
+{
+	if (tcp_socket == INVALID_SOCKET)return false;
+	if (::send(tcp_socket, buffer, sizeof(buffer), 0) <= 0) return false;
 	return true;
 }
 
@@ -80,13 +93,13 @@ int MengTcpServer::getServerListenSocket()
 	return this->server_listen_socket;
 }
 
-MengTcpServer::MengTcpServer() :server_listen_socket(-1) //³õÊ¼»¯¿Í»§¶Ë,·şÎñ¶Ë³õÊ¼ip(¿Í»§¶Ë»¹Î´Á¬½Ó)
+MengTcpServer::MengTcpServer() :server_listen_socket(-1) //åˆå§‹åŒ–å®¢æˆ·ç«¯,æœåŠ¡ç«¯åˆå§‹ip(å®¢æˆ·ç«¯è¿˜æœªè¿æ¥)
 {
 	//threads_pool = new MengThreadPool(8);
 	WSADATA wsaData;     
 	if (WSAStartup(MAKEWORD(2, 2), &wsaData) != 0) 
 	{ 
-		throw runtime_error("ÍøÂç³õÊ¼»¯Ê§°Ü..."); 
+		throw runtime_error("ç½‘ç»œåˆå§‹åŒ–å¤±è´¥..."); 
 	}
 }
 

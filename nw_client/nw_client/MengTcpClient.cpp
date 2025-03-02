@@ -47,28 +47,33 @@ bool MengTcpClient::tcp_connect(const char* in_server_ip, const unsigned short i
     return true;
 }
 
-bool MengTcpClient::send(const char buffer[1024])
+bool MengTcpClient::send(const char buffer[1024], SOCKET tcp_socket)
 {
     if (client_socket == INVALID_SOCKET)return false;
-    if (::send(client_socket, buffer,strlen(buffer), 0) <= 0)return false;
+    if (::send(tcp_socket, buffer,sizeof(buffer), 0) <= 0)return false;
     return true;
 }
 
-bool MengTcpClient::recv(string& buffer, const size_t maxlen)
+bool MengTcpClient::recv(char* buffer, const size_t buffer_len, SOCKET tcp_socket)
 {
-    buffer.clear();
-    buffer.resize(maxlen);
-    int readn = ::recv(client_socket, &buffer[0], buffer.size(), 0);
+    memset(buffer, 0, buffer_len);
+    int readn = ::recv(tcp_socket, buffer, buffer_len - 1, 0);
     if (readn <= 0) {
-        buffer.clear();
+        memset(buffer, 0, buffer_len);
         return false;
     }
-    buffer.resize(readn);
+    cout << "现在为此，buffer为:" << buffer << endl;
     return true;
+}
+
+SOCKET MengTcpClient::getClientSocket()
+{
+    return client_socket;
 }
 
 MengTcpClient::MengTcpClient():client_socket(-1)
 {
+
     WSADATA wsaData;
     if (WSAStartup(MAKEWORD(2, 2), &wsaData) != 0)
     {

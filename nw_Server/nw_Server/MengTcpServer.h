@@ -14,7 +14,10 @@ public:
 	bool initServer(const unsigned short in_port); //初始化服务端监听socket/服务端
 	pair<int,bool> accept();
 	//bool send(const string &buffer, int connect_socket);
-	static bool recv(string& buffer, const size_t maxlen, int tcp_socket);
+	static bool recv(char* buffer, const size_t buffer_len, const SOCKET tcp_socket);
+	//static bool recv(void* buffer, const size_t bf_size, const SOCKET tcp_socket);
+	//static bool send(void* buffer, const size_t bf_size, const SOCKET tcp_socket);
+	static bool send(const char buffer[1024], const size_t buffer_len, const SOCKET tcp_socket);
 	bool closeListenSocket(); //关闭监听socket
 	//bool closeServerTcpSocket(); //关闭通讯socket
 	const string& getClientIp() const;

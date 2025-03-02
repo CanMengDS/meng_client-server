@@ -104,6 +104,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -127,12 +128,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="CommandConduct.h" />
+    <ClInclude Include="MengIOConduct.h" />
     <ClInclude Include="MengMultiTcpConduct.h" />
     <ClInclude Include="MengTcpServer.h" />
-    <ClInclude Include="reClientData.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CommandConduct.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MengFileInfo.h" />
+    <ClCompile Include="MengIOConduct.cpp" />
     <ClCompile Include="MengMultiTcpConduct.cpp" />
     <ClCompile Include="MengTcpServer.cpp" />
     <ClCompile Include="MengServerThreadPool.cpp" />
