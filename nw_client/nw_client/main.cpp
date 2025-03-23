@@ -43,19 +43,12 @@ int main(int argc, char* argv[]) {
 			clog << "成功发送数据" << endl;
 		}
 
-		if (mengClient.recv(recv_buffer, sizeof(recv_buffer), tcp_socket)) {
+		/*if (mengClient.recv(recv_buffer, sizeof(recv_buffer), tcp_socket)) {
 			cout << "正确接收" << endl;
 
 			recvive_document = recv_buffer;
 			cout << recv_buffer << endl;
-			/*if (recvive_document.compare("|image|")) {
-				conduct_.recvive(tcp_socket, mengClient);
-			}
-			else if (recvive_document.compare("-1")) {
-				clog << "服务端正确回应" << endl;
-				continue;
-			}*/
-		}
+		}*/
 	}
 	
 	system("pause");

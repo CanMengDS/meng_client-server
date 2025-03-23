@@ -24,9 +24,6 @@
     <ClInclude Include="CommandConduct.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="MengIOConduct.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MengTcpServer.cpp">
@@ -35,22 +32,13 @@
     <ClCompile Include="main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="MengServerThreadPool.h">
-      <Filter>头文件</Filter>
-    </ClCompile>
-    <ClCompile Include="MengServerThreadPool.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="MengMultiTcpConduct.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="CommandConduct.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="MengIOConduct.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="MengFileInfo.h">
+    <ClCompile Include="IOconc.h">
       <Filter>头文件</Filter>
     </ClCompile>
   </ItemGroup>
