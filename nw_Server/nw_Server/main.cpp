@@ -16,31 +16,6 @@ using namespace std;
 #define DEFAULT_WOKER 4
 #define DEFAULT_BUFFER_SIZE 1024
 
-
-//bool MPostAccept(SOCKET overlapped_listen_socket)
-//{
-//	SOCKET client_sock = WSASocket(AF_INET, SOCK_STREAM, 0, NULL, 0, WSA_FLAG_OVERLAPPED);
-//	if (client_sock == INVALID_SOCKET) return false;
-//
-//	OverlappedPerIO* overlp = new OverlappedPerIO;
-//	if (overlp == nullptr) {
-//		closesocket(client_sock);
-//		cout << "投递Accept重叠结构创建失败,已返回..." << endl;
-//		return false;
-//	}
-//
-//	ZeroMemory(overlp, sizeof(OverlappedPerIO));
-//	overlp->socket = client_sock;
-//	overlp->wasBuf.buf = overlp->buffer;
-//	overlp->wasBuf.len = 1024;
-//	overlp->type = IO_TYPE::IO_ACCEPT;
-//	DWORD recv_buf_num = 0;
-//  
-//	AcceptEx(overlapped_listen_socket, client_sock, overlp->wasBuf.buf, overlp->wasBuf.len, sizeof(SOCKADDR_IN) + 16, sizeof(SOCKADDR_IN) + 16, &recv_buf_num, (LPOVERLAPPED)overlp);
-//	clog << "有新的客户端连接..." << endl;
-//	return true;
-//}
-
 void MPostAccept(SOCKET listen_socket)
 {
 	SOCKET client_sock = WSASocket(AF_INET, SOCK_STREAM, 0, NULL, 0, WSA_FLAG_OVERLAPPED);
@@ -70,14 +45,7 @@ void MPostAccept(SOCKET listen_socket)
 
 		//if (WSAGetLastError() == WSA_IO_PENDING) break;
 	}
-	cout << "正确投递" << endl;
-	/*ZeroMemory(overlp->buffer, 1024);
-	overlp->socket = client_sock;
-	overlp->type = IO_TYPE::IO_RECV;
-	overlp->wasBuf.buf = overlp->buffer;
-	overlp->wasBuf.len = 1024;
-	CreateIoCompletionPort((HANDLE)overlp->socket, completionPort, NULL, 0);*/
-	clog << "post succeed..." << '\n';
+	clog << "achieve post Accept completion" << '\n';
 }
 
 DWORD WINAPI MwokerThread(LPVOID lp) {
@@ -172,6 +140,7 @@ DWORD WINAPI MwokerThread(LPVOID lp) {
 					chunk_index++;  //当前碎片索引
 				}
 			}else{
+				header.persent_size = header.total_size;
 				ZeroMemory(&overlp->overlapped, sizeof(OVERLAPPED));
 				memset(overlp->buffer, 0, sizeof(overlp->buffer));
 				overlp->type = IO_TYPE::IO_SEND;
