@@ -1,5 +1,4 @@
-D:\C++ github_project\simple_client-server\nw_Server\nw_Server\CommandConduct.cpp;D:\C++ github_project\simple_client-server\nw_Server\nw_Server\x64\Debug\CommandConduct.obj
 D:\C++ github_project\simple_client-server\nw_Server\nw_Server\IOconc.h;D:\C++ github_project\simple_client-server\nw_Server\nw_Server\x64\Debug\IOconc.obj
 D:\C++ github_project\simple_client-server\nw_Server\nw_Server\main.cpp;D:\C++ github_project\simple_client-server\nw_Server\nw_Server\x64\Debug\main.obj
-D:\C++ github_project\simple_client-server\nw_Server\nw_Server\MengMultiTcpConduct.cpp;D:\C++ github_project\simple_client-server\nw_Server\nw_Server\x64\Debug\MengMultiTcpConduct.obj
+D:\C++ github_project\simple_client-server\nw_Server\nw_Server\MengSelectServer.cpp;D:\C++ github_project\simple_client-server\nw_Server\nw_Server\x64\Debug\MengSelectServer.obj
 D:\C++ github_project\simple_client-server\nw_Server\nw_Server\MengTcpServer.cpp;D:\C++ github_project\simple_client-server\nw_Server\nw_Server\x64\Debug\MengTcpServer.obj

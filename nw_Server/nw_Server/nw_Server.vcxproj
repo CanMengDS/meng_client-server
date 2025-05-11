@@ -129,15 +129,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="CommandConduct.h" />
-    <ClInclude Include="MengMultiTcpConduct.h" />
+    <ClInclude Include="MengSelectServer.h" />
     <ClInclude Include="MengTcpServer.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="CommandConduct.cpp" />
     <ClCompile Include="IOconc.h" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="MengMultiTcpConduct.cpp" />
+    <ClCompile Include="MengSelectServer.cpp" />
     <ClCompile Include="MengTcpServer.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

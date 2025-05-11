@@ -8,7 +8,7 @@ using namespace std;
 class MengTcpClient {
 public:
 	bool tcp_connect(const char* in_server_ip, const unsigned short in_port); //需要服务端的ip和通讯端口,向服务端发起连接，成功true，失败false
-	bool send(const char buffer[1024],SOCKET tcp_socket);
+	bool send(const char*, size_t len, SOCKET tcp_socket);
 	static bool recv(char* buffer, const size_t buffer_len, SOCKET tcp_socket);
 	SOCKET getClientSocket();
 	MengTcpClient();

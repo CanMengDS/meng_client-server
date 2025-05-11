@@ -1,19 +1,18 @@
 #pragma comment(lib, "Ws2_32.lib")
 #include<iostream>
-#include"MengIOConduct.h"
 #include"MengTcpClient.h"
+#include"IOconc.h"
 using namespace std;
 
-int main(int argc, char* argv[]) {
+#define DEFAULT_BUFFER_SIZE 1024
+
+int main() {
 	//cout << argc << endl;
 	//cout << argv[1] << "|" << argv[2] << endl;
-	if (argc != 3) {
-		return -1;
-	}
 
 	MengTcpClient mengClient;
 
-	if (mengClient.tcp_connect(argv[1], atoi(argv[2])) == false) {
+	if (mengClient.tcp_connect("192.168.1.8",5408) == false) {
 		cerr << "未成功建立通讯..." << endl;
 		system("pause");
 		return -1;
@@ -21,21 +20,21 @@ int main(int argc, char* argv[]) {
 		clog << "成功建立通讯..." << endl;
 	}
 
-	char send_buffer[1024];
-	char recv_buffer[1024];
+	char send_buffer[DEFAULT_BUFFER_SIZE];
+	char recv_buffer[DEFAULT_BUFFER_SIZE];
 	memset(&send_buffer, 0, sizeof(send_buffer));
 
 	int cho = 0, num = 0;
 	string user_document;
 
 	SOCKET tcp_socket = mengClient.getClientSocket();
-	string recvive_document;
-	MengIOConduct conduct_;
+	MengDataHeader header;
+	bool ismessage = false;
 	while (1) {
 		cout << '\n' << "请输入发送数据,并回车以确认发送..." << endl;
 		cin >> user_document;
-		memcpy(&send_buffer, user_document.c_str(), sizeof(user_document));
-		if (mengClient.send(user_document.c_str(), tcp_socket) == false) {
+		memcpy(&send_buffer, user_document.data(),user_document.size());
+		if (mengClient.send(send_buffer,user_document.size(), tcp_socket) == false) {
 			cerr << "未知错误,未能成功发送数据,已断开服务端连接" << endl;
 			break;
 		}
@@ -43,12 +42,18 @@ int main(int argc, char* argv[]) {
 			clog << "成功发送数据" << endl;
 		}
 
-		/*if (mengClient.recv(recv_buffer, sizeof(recv_buffer), tcp_socket)) {
+		if (mengClient.recv(recv_buffer, DEFAULT_BUFFER_SIZE, tcp_socket)) {
 			cout << "正确接收" << endl;
-
-			recvive_document = recv_buffer;
-			cout << recv_buffer << endl;
-		}*/
+			memcpy(&header, recv_buffer, sizeof(MengDataHeader));
+			cout << "接收总数据字节数为:" << header.total_size << '\n'
+				<< "接收数据类型" << ((ismessage = header.type == DATA_TYPE::STRING) ? "string" : "未知") << endl;
+			if (ismessage) {
+				cout.write(recv_buffer + sizeof(MengDataHeader), header.total_size);
+			}
+			memset(&header, 0, sizeof(MengDataHeader));
+			memset(recv_buffer, 0, 1024);
+			//cout << recv_buffer << endl;
+		}
 	}
 	
 	system("pause");

@@ -1,4 +1,10 @@
-﻿  main.cpp
-D:\C++ github_project\simple_client-server\nw_client\nw_client\main.cpp(25,7): warning C4101: “recv_buffer”: 未引用的局部变量
-D:\C++ github_project\simple_client-server\nw_client\nw_client\main.cpp(33,16): warning C4101: “conduct_”: 未引用的局部变量
+﻿  MengTcpClient.cpp
+D:\C++ github_project\simple_client-server\nw_client\nw_client\MengTcpClient.cpp(6,15): warning C4244: “参数”: 从“const unsigned short”转换到“const _Elem”，可能丢失数据
+D:\C++ github_project\simple_client-server\nw_client\nw_client\MengTcpClient.cpp(6,15): warning C4244:         with
+D:\C++ github_project\simple_client-server\nw_client\nw_client\MengTcpClient.cpp(6,15): warning C4244:         [
+D:\C++ github_project\simple_client-server\nw_client\nw_client\MengTcpClient.cpp(6,15): warning C4244:             _Elem=char
+D:\C++ github_project\simple_client-server\nw_client\nw_client\MengTcpClient.cpp(6,15): warning C4244:         ]
+D:\C++ github_project\simple_client-server\nw_client\nw_client\MengTcpClient.cpp(24,63): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
+D:\C++ github_project\simple_client-server\nw_client\nw_client\MengTcpClient.cpp(53,35): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
+D:\C++ github_project\simple_client-server\nw_client\nw_client\MengTcpClient.cpp(60,44): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
   nw_client.vcxproj -> D:\C++ github_project\simple_client-server\nw_client\x64\Debug\nw_client.exe

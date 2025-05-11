@@ -12,7 +12,7 @@ bool MengTcpClient::tcp_connect(const char* in_server_ip, const unsigned short i
 
     addrinfo* servaddr = nullptr;//存放服务器IP地址(大端序)的结构体的指针
     //memset(&servaddr, 0, sizeof(servaddr));
-    if (getaddrinfo("192.168.1.7", "5408", &hints, &servaddr) != 0) {
+    if (getaddrinfo("192.168.1.8", "5408", &hints, &servaddr) != 0) {
         closesocket(client_socket);
         client_socket = -1;
         return false;
@@ -47,22 +47,22 @@ bool MengTcpClient::tcp_connect(const char* in_server_ip, const unsigned short i
     return true;
 }
 
-bool MengTcpClient::send(const char buffer[1024], SOCKET tcp_socket)
+bool MengTcpClient::send(const char* buffer, size_t len,SOCKET tcp_socket)
 {
     if (client_socket == INVALID_SOCKET)return false;
-    if (::send(tcp_socket, buffer,sizeof(buffer), 0) <= 0)return false;
+    if (::send(tcp_socket, buffer,len, 0) <= 0)return false;
     return true;
 }
 
 bool MengTcpClient::recv(char* buffer, const size_t buffer_len, SOCKET tcp_socket)
 {
     memset(buffer, 0, buffer_len);
-    int readn = ::recv(tcp_socket, buffer, buffer_len - 1, 0);
+    int readn = ::recv(tcp_socket, buffer, buffer_len, 0);
     if (readn <= 0) {
         memset(buffer, 0, buffer_len);
         return false;
     }
-    cout << "现在为此，buffer为:" << buffer << endl;
+    //cout << "现在为此，buffer为:" << buffer << endl;
     return true;
 }
 
