@@ -10,10 +10,23 @@ enum class DATA_TYPE {
 	JPG
 };
 
+enum class LARGE_FILE_SIGN {
+	IS_LARGE_FILE,
+};
+
 struct MengDataHeader {
 	DATA_TYPE type;
 	uint32_t total_size;
-	uint16_t persent_size;
+	uint8_t persent_size;
 	uint8_t present_chunk;
 	uint8_t chunk_total;
+	uint16_t data_signs;
+};
+
+struct UnTreatedLargeFile {
+	LARGE_FILE_SIGN is_large;
+	bool is_real;
+	unsigned file_signs = 0;
+	unsigned total_size;
+	unsigned short last_chunk;
 };

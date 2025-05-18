@@ -62,7 +62,6 @@ bool MengTcpClient::recv(char* buffer, const size_t buffer_len, SOCKET tcp_socke
         memset(buffer, 0, buffer_len);
         return false;
     }
-    //cout << "现在为此，buffer为:" << buffer << endl;
     return true;
 }
 

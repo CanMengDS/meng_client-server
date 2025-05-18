@@ -1,6 +1,15 @@
 #include "MengTcpServer.h"
 #define BUFFER_SIZE 1024
 
+int MengTcpServer::getRandomFileSign(short max_random_base)
+{
+	for (int i = 1; i <= max_random_base; i++) {
+		random_base.push_back(i);
+	}
+	sample(random_base.begin(), random_base.end(), random_out.begin(), 3, mt19937{ random_device{}() });
+	return *random_out.begin() * 100 + *(random_out.begin() + 1) * 10 + *(random_out.begin() + 2);
+}
+
 bool MengTcpServer::initServer(const unsigned short in_port,ServerParams& pms)
 {
 	pms.listen_socket = WSASocket(AF_INET, SOCK_STREAM, 0,NULL,0,WSA_FLAG_OVERLAPPED);
@@ -38,12 +47,6 @@ bool MengTcpServer::initServer(const unsigned short in_port,ServerParams& pms)
 }
 
 
-
-
-
-/**
- * @brief 用于异步IO的投递Accept
- */
 void MengTcpServer::PostAccept(SOCKET listen_socket)
 {
 	SOCKET client_sock = WSASocket(AF_INET, SOCK_STREAM, 0, NULL, 0, WSA_FLAG_OVERLAPPED);
@@ -58,31 +61,20 @@ void MengTcpServer::PostAccept(SOCKET listen_socket)
 	ZeroMemory(overlp, sizeof(OverlappedPerIO));
 	overlp->socket = client_sock;
 	overlp->wasBuf.buf = overlp->buffer;
-	overlp->wasBuf.len = BUFFER_SIZE;
-	overlp->type = IO_TYPE::IO_ACCEPT; 
+	overlp->wasBuf.len = 1024;
+	overlp->type = IO_TYPE::IO_ACCEPT;
 	DWORD recv_buf_num = 0;
 
 
-	while (AcceptEx(listen_socket, 
-		client_sock, 
-		overlp->wasBuf.buf, 
-		0, 
-		sizeof(SOCKADDR_IN) + 16, 
-		sizeof(SOCKADDR_IN) + 16, 
+	while (AcceptEx(listen_socket,
+		client_sock,
+		overlp->wasBuf.buf,
+		0,
+		sizeof(SOCKADDR_IN) + 16,
+		sizeof(SOCKADDR_IN) + 16,
 		&recv_buf_num, (LPOVERLAPPED)overlp)) {
-
-		if (WSAGetLastError() == WSA_IO_PENDING) break;
 	}
-
-
-	/*bool Succ = AcceptEx(listen_socket, client_sock, overlp->wasBuf.buf, 0, sizeof(SOCKADDR_IN) + 16, sizeof(SOCKADDR_IN) + 16, &recv_buf_num, (LPOVERLAPPED)overlp);
-	if (!Succ) {
-		if (WSAGetLastError() == WSA_IO_PENDING) {
-			cerr << "PostAccept is fail..." << endl;
-		}
-		return;
-	}*/
-	clog << "post succeed..." << '\n';
+	clog << "achieve post Accept completion" << '\n';
 }
 
 void MengTcpServer::wokerThread(ServerParams lp) {

@@ -1,8 +1,9 @@
+#pragma once
 #include<WinSock2.h>
 #include <ws2tcpip.h>
 #include<MSWSock.h>
 #include <cstdint>
-
+#include"MengTcpServer.h"
 
 
 
@@ -23,9 +24,10 @@ enum class DATA_TYPE {
 struct MengDataHeader {
 	DATA_TYPE type;
 	uint32_t total_size;
-	uint16_t persent_size;
+	uint8_t persent_size;
 	uint8_t present_chunk;
 	uint8_t chunk_total;
+	uint16_t data_signs;
 };
 
 struct OverlappedPerIO {
@@ -43,4 +45,9 @@ typedef struct {
 struct ServerParams {
 	SOCKET listen_socket;
 	HANDLE iocp;
+};
+
+struct TempParamServerInfor {
+	ServerParams* pms;
+	class MengTcpServer* serv;
 };
