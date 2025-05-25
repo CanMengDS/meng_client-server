@@ -1,8 +1,11 @@
 ﻿  main.cpp
-D:\C++ github_project\simple_client-server\nw_Server\nw_Server\main.cpp(80,39): warning C4267: “=”: 从“size_t”转换到“uint8_t”，可能丢失数据
-D:\C++ github_project\simple_client-server\nw_Server\nw_Server\main.cpp(81,19): warning C4804: “/”: 在操作中使用类型“bool”不安全
-D:\C++ github_project\simple_client-server\nw_Server\nw_Server\main.cpp(84,41): warning C4267: “参数”: 从“size_t”转换到“u_long”，可能丢失数据
-D:\C++ github_project\simple_client-server\nw_Server\nw_Server\main.cpp(86,29): warning C4244: “=”: 从“u_long”转换到“uint16_t”，可能丢失数据
-D:\C++ github_project\simple_client-server\nw_Server\nw_Server\main.cpp(95,30): warning C4244: “=”: 从“u_long”转换到“uint16_t”，可能丢失数据
-D:\C++ github_project\simple_client-server\nw_Server\nw_Server\main.cpp(134,32): warning C4244: “=”: 从“u_long”转换到“uint8_t”，可能丢失数据
+D:\C++ github_project\simple_client-server\nw_Server\nw_Server\main.cpp(82,41): warning C4267: “参数”: 从“size_t”转换到“u_long”，可能丢失数据
+D:\C++ github_project\simple_client-server\nw_Server\nw_Server\main.cpp(84,30): warning C4305: “参数”: 从“int”到“u_short”截断
+D:\C++ github_project\simple_client-server\nw_Server\nw_Server\main.cpp(84,30): warning C4309: “参数”: 截断常量值
+D:\C++ github_project\simple_client-server\nw_Server\nw_Server\main.cpp(87,15): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+D:\C++ github_project\simple_client-server\nw_Server\nw_Server\main.cpp(104,33): warning C4267: “参数”: 从“size_t”转换到“u_short”，可能丢失数据
+D:\C++ github_project\simple_client-server\nw_Server\nw_Server\main.cpp(111,21): warning C4267: “参数”: 从“size_t”转换到“u_short”，可能丢失数据
+D:\C++ github_project\simple_client-server\nw_Server\nw_Server\main.cpp(129,34): warning C4267: “参数”: 从“size_t”转换到“u_short”，可能丢失数据
+D:\C++ github_project\simple_client-server\nw_Server\nw_Server\main.cpp(138,39): warning C4267: “=”: 从“size_t”转换到“ULONG”，可能丢失数据
+D:\C++ github_project\simple_client-server\nw_Server\nw_Server\main.cpp(157,43): warning C4267: “参数”: 从“size_t”转换到“u_short”，可能丢失数据
   nw_Server.vcxproj -> D:\C++ github_project\simple_client-server\nw_Server\x64\Debug\nw_Server.exe

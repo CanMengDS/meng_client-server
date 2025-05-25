@@ -62,7 +62,32 @@ bool MengTcpClient::recv(char* buffer, const size_t buffer_len, SOCKET tcp_socke
         memset(buffer, 0, buffer_len);
         return false;
     }
+    //cout << "现在为此，buffer为:" << buffer << endl;
     return true;
+}
+
+bool MengTcpClient::recvLargeData(char* first_data, const size_t first_len, const MengDataHeader* header, SOCKET socket)
+{
+    //没有判断数据类型，假定数据类型一直为string
+    if (first_len != 1024) return false;
+
+    char* recv_buffer = first_data;
+    int chunks = header->chunk_total;
+    int present = 1;
+    uint32_t total_size = header->total_size;
+    uint32_t recv_offest = 0;
+
+    cout.write(recv_buffer, first_len);
+    
+    memset(recv_buffer, 0, first_len);
+
+    while (recv_offest < total_size) {
+        if (this->recv(recv_buffer, 1024, socket)) {
+            cout << "大型文件-正确接收:" << header->present_chunk << endl;
+            recv_offest += header->persent_size;
+            if (header->present_chunk == header->chunk_total) break;
+        }
+    }
 }
 
 SOCKET MengTcpClient::getClientSocket()
