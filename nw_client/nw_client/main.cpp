@@ -69,7 +69,7 @@ int main() {
 					header.persent_size = ntohs(header.persent_size);
 					present_size = header.persent_size;
 					//present_size = ntohs(header.persent_size);
-					cout.write(recv_buffer + sizeof(MengDataHeader), ntohs(header.persent_size));
+					cout.write(recv_buffer + sizeof(MengDataHeader), header.persent_size);
 					offest += present_size;
 					present_chunk = header.present_chunk;
 				}

@@ -38,7 +38,7 @@ struct OverlappedPerIO {
 	WSABUF wasBuf;
 	IO_TYPE type;
 	char buffer[1024];
-	uint16_t id;
+	uint32_t id;
 };
 
 typedef struct {

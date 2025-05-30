@@ -5,6 +5,7 @@
 #include<random>
 #include"IOconc.h"
 using namespace std;
+#define DEFAULT_BUFFER_SIZE 1024
 
 class MengTcpServer {
 private:
@@ -20,11 +21,10 @@ public:
 
 	bool initServer(const unsigned short in_port, struct ServerParams& pms); //初始化服务端监听socket/服务端
 	//static pair<int,bool> PostAccept(SOCKET listen_socket);
-	void wokerThread(struct ServerParams lp);
+	void wokerThread(struct TempParamServerInfor* lp);
 	void PostAccept(SOCKET overlapped_listen_socket);
 	static bool recv(char* buffer, const size_t buffer_len, SOCKET tcp_socket);
 	static bool send(const char buffer[1024], const size_t buffer_len, SOCKET tcp_socket);
-	int getRandomFileSign(short maxRandomBase);
 	//bool closeListenSocket(); //关闭监听socket
 	bool closeServerTcpSocket(); //关闭通讯socket
 	const string& getClientIp() const;
