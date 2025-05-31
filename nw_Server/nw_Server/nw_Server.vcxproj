@@ -133,6 +133,8 @@
     <ClInclude Include="MengTcpServer.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CMTheadPool.cpp" />
+    <ClCompile Include="CMThreadPool.hpp" />
     <ClCompile Include="IOconc.h" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MengSelectServer.cpp" />

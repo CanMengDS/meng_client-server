@@ -1,12 +1,13 @@
 ﻿#pragma comment(lib, "Ws2_32.lib")
 #pragma comment(lib, "mswsock.lib") 
-#include<iostream>
 #include <cstdlib>
 #include <cstring>
 #include <thread>
 #include <condition_variable>
 #include <mutex>
 #include"MengSelectServer.h"
+#include"CMThreadPool.hpp"
+
 using namespace std;
 
 #pragma pack(push, 1)
@@ -192,10 +193,10 @@ DWORD WINAPI MwokerThread(LPVOID lp) {
 
 int main() {
 	MengTcpServer mengServer;
+	CMThreadPool cm_pool(3);
 	ServerParams pms{ 0 };
 	mutex lo;
 	condition_variable cm_cv;
-	
 	while (1) {
 		if (mengServer.initServer(DEFAULT_PORT, pms) == false) {
 			cerr << "初始化服务器/连接服务器失败,请尝试重新进行初始化连接..." << endl;
@@ -215,10 +216,17 @@ int main() {
 	switch (choies) {
 	case 1:
 		TempParamServerInfor temp = { &pms,&mengServer };
-		auto func = std::bind(MwokerThread, &temp);
+
+		function<void()> func = std::bind(&MengTcpServer::wokerThread,&mengServer,&temp);
+		for (int i = 0; i <= DEFAULT_WOKER; i++) {
+			cm_pool.PostTask(func);
+		}
+
+		/*auto func = std::bind(MwokerThread, &temp);
 		for (int i = 0; i < DEFAULT_WOKER; i++) {
 			CreateThread(NULL, 0, MwokerThread, &temp, 0, NULL);
-		}
+		}*/
+
 		mengServer.PostAccept(pms.listen_socket);
 		
 	}

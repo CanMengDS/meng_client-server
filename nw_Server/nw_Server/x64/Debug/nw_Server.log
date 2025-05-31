@@ -1,6 +1,2 @@
-﻿  MengTcpServer.cpp
-D:\C++ github_project\simple_client-server\nw_Server\nw_Server\MengTcpServer.cpp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-D:\C++ github_project\simple_client-server\nw_Server\nw_Server\MengTcpServer.cpp(255,52): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
-D:\C++ github_project\simple_client-server\nw_Server\nw_Server\MengTcpServer.cpp(300,13): warning C4244: “return”: 从“SOCKET”转换到“int”，可能丢失数据
-D:\C++ github_project\simple_client-server\nw_Server\nw_Server\MengTcpServer.cpp(295,1): warning C4172: 返回局部变量的地址或临时 
+﻿  CMTheadPool.cpp
   nw_Server.vcxproj -> D:\C++ github_project\simple_client-server\nw_Server\x64\Debug\nw_Server.exe

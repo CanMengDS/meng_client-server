@@ -35,5 +35,11 @@
     <ClCompile Include="IOconc.h">
       <Filter>头文件</Filter>
     </ClCompile>
+    <ClCompile Include="CMThreadPool.hpp">
+      <Filter>头文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CMTheadPool.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
