@@ -1,6 +1,0 @@
-﻿  main.cpp
-D:\C++ github_project\simple_client-server\nw_Server\nw_Server\main.cpp(141,39): warning C4267: “=”: 从“size_t”转换到“uint8_t”，可能丢失数据
-D:\C++ github_project\simple_client-server\nw_Server\nw_Server\main.cpp(142,35): warning C4267: “=”: 从“size_t”转换到“uint32_t”，可能丢失数据
-D:\C++ github_project\simple_client-server\nw_Server\nw_Server\main.cpp(147,24): warning C4552: ”+“: 未使用表达式结果
-D:\C++ github_project\simple_client-server\nw_Server\nw_Server\main.cpp(158,29): warning C4267: “=”: 从“size_t”转换到“uint8_t”，可能丢失数据
-  nw_Server.vcxproj -> D:\C++ github_project\simple_client-server\nw_Server\x64\Debug\nw_Server.exe
